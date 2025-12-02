@@ -1,2 +1,2 @@
-# test01-e2d.githud.io
+# sakura-city
 E2Bの授業用Webサイト
