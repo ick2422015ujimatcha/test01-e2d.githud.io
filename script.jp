@@ -1,0 +1,37 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. フェードインアニメーション
+    const fadeInElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 要素がビューポートに入ったら 'is-visible' クラスを追加
+                entry.target.classList.add('is-visible');
+                // 一度表示されたら監視を停止
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        // ビューポートの0.1だけ見えたらトリガー
+        threshold: 0.1 
+    });
+
+    fadeInElements.forEach(element => {
+        observer.observe(element);
+    });
+
+    // 2. イベント情報を動的に追加
+    const events = [
+        { name: "佐倉チューリップフェスタ", season: "春 (4月)", note: "オランダ風車と一面のチューリップ畑が見どころ！" },
+        { name: "佐倉花火フェスタ", season: "夏 (8月)", note: "印旛沼湖畔で開催される大迫力の花火大会。" },
+        { name: "佐倉時代まつり", season: "秋 (11月)", note: "城下町らしい歴史的なパレードが楽しめます。" }
+    ];
+
+    const eventList = document.getElementById('event-list');
+
+    events.forEach(event => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<strong>${event.name}</strong> (${event.season}) - ${event.note}`;
+        eventList.appendChild(listItem);
+    });
+});
