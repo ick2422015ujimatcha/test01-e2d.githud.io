@@ -197,6 +197,24 @@ footer {
     .grid-container {
         grid-template-columns: 1fr;
     }
+/* style.css (一部抜粋) */
+
+/* 画像のコンテナ。高さ固定でレイアウトの安定性を確保 */
+.image-placeholder {
+    width: 100%;
+    height: 200px; /* 画像の標準的な高さ */
+    overflow: hidden;
+}
+
+/* 実際の画像要素 */
+.content-body-img {
+    max-width: 100%;
+    height: 100%;
+    /* 【重要】アスペクト比を保ちつつ、コンテナ全体を覆うように画像を切り抜き表示する */
+    object-fit: cover; 
+    display: block;
+    margin: 0;
+}
 
     /* パディングを調整 */
     section {
